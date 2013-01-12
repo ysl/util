@@ -9,7 +9,7 @@
 #include <sys/queue.h>
 
 
-#define SERVER_HOSTNAME   "10.32.100.194"
+#define SERVER_HOSTNAME   "127.0.0.1"
 #define SERVER_PORT       18088
 
 /*
