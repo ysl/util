@@ -7,8 +7,6 @@
 
 memcached_st  *pmmc;
 
-
-
 /*
  * mmc_cleanup()
  */
@@ -34,6 +32,9 @@ int mmc_init (char *server_list)
     return -1;
   }
 
+  /*
+   * Add server.
+   */
   servers = memcached_servers_parse(server_list);
   ret = memcached_server_push(pmmc, servers);
   if (ret != MEMCACHED_SUCCESS) {
@@ -42,6 +43,9 @@ int mmc_init (char *server_list)
     return -1;
   }
 
+  /*
+   * Set options.
+   */
   memcached_behavior_set(pmmc, MEMCACHED_BEHAVIOR_POLL_TIMEOUT, 5000);
   memcached_behavior_set(pmmc, MEMCACHED_BEHAVIOR_CONNECT_TIMEOUT, 5000);
   memcached_behavior_set(pmmc, MEMCACHED_BEHAVIOR_NO_BLOCK, 1);
